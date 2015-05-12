@@ -2,21 +2,7 @@ var Stats = require('Stats')
   , properties = require('../properties');
 
 module.exports = function(game) {
-
-  var boot = {};
-
-  boot.create = function () {
-
-    if (properties.showStats) {
-      addStats();
-    }
-
-    game.sound.mute = properties.mute;
-
-    game.state.start('preloader');
-  };
-
-  function addStats() {
+  var addStats = function() {
     var stats = new Stats();
 
     stats.setMode(0);
@@ -31,7 +17,19 @@ module.exports = function(game) {
       stats.begin();
       stats.end();
     }, 1000 / 60);
-  }
+  };
+
+  var boot = {};
+
+  boot.create = function () {
+    if (properties.showStats) {
+      addStats();
+    }
+
+    game.sound.mute = properties.mute;
+
+    game.state.start('preloader');
+  };
 
   return boot;
 };
