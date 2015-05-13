@@ -65,7 +65,7 @@ module.exports = function(grunt) {
                 livereload: productionBuild ? false : properties.liveReloadPort
             },
             js: {
-                files: 'src/**/*.js',
+                files: 'build/**/*.js',
                 tasks: ['jshint']
             },
             sass: {
